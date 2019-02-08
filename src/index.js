@@ -56,8 +56,14 @@ class LinkButtonComponent extends AppComponent {
   renderContent() {
     const elemProps = this.getElementProps();
     elemProps.style = this.getDefaultStyle() || {};
+    const graphId = this.getPropertyData('event');
     return (
-      <button type="button" className="button-component" aria-busy="false">
+      <button 
+        type="button" 
+        className="button-component" 
+        aria-busy="false"
+        onClick={this.getElementProps().onEvent(graphId)}
+      >
         <span className="button-text">
           {this.getPropertyData('text') || 'Default Button Text'}
         </span>

@@ -64,10 +64,11 @@ class LinkButtonComponent extends AppComponent {
     const graphId = this.getPropertyData('event');
     return (
       <button 
-        type="button" 
-        className="button-component" 
+        type="button"
+        className="button-component"
         aria-busy="false"
-        onClick={this.getElementProps().onEvent(graphId)}
+        onClick={this.triggerGraphEvent}
+        onMouseOver={this.triggerGraphEvent}
       >
         <span className="button-text">
           {this.getPropertyData('text') || 'Default Button Text'}

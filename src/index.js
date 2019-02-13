@@ -53,17 +53,21 @@ class LinkButtonComponent extends AppComponent {
     this.state = Object.assign(this.state, newState); // merge two states together, and dont lose any parent state properties.
   }
 
+  triggerGraphEvent = () => {
+    const graphId = this.getPropertyData('event');
+    this.getElementProps().onEvent(graphId)
+  }
+
   renderContent() {
     const elemProps = this.getElementProps();
     elemProps.style = this.getDefaultStyle() || {};
-    const graphId = this.getPropertyData('event');
     return (
       <button 
-        type="button" 
-        className="button-component" 
+        type="button"
+        className="button-component"
         aria-busy="false"
-        onClick={this.getElementProps().onEvent(graphId)}
-        onMouseOver={this.getElementProps().onEvent(graphId)}
+        onClick={this.triggerGraphEvent}
+        onMouseOver={this.triggerGraphEvent}
       >
         <span className="button-text">
           {this.getPropertyData('text') || 'Default Button Text'}

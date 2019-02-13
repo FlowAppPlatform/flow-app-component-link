@@ -63,6 +63,7 @@ class LinkButtonComponent extends AppComponent {
         className="button-component" 
         aria-busy="false"
         onClick={this.getElementProps().onEvent(graphId)}
+        onMouseOver={this.getElementProps().onEvent(graphId)}
       >
         <span className="button-text">
           {this.getPropertyData('text') || 'Default Button Text'}

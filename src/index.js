@@ -79,8 +79,9 @@ class LinkButtonComponent extends AppComponent {
   renderContent() {
     const elemProps = this.getElementProps();
     elemProps.style = this.getDefaultStyle() || {};
+    const graphId = this.getPropertyData('event');
     return (
-      <button 
+      <button
         type="button"
         className="button-component"
         aria-busy="false"

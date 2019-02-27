@@ -27,6 +27,27 @@ class LinkButtonComponent extends AppComponent {
               options: {},
               data: null,
             },
+            {
+              id: 'style',
+              name: 'Align Text',
+              type: 'dropdown', 
+              options: {
+                options: [{
+                  label: 'Left',
+                  value: 'left'
+                },
+                {
+                  label: 'Right',
+                  value: 'right'
+                },
+                {
+                  label: 'Center',
+                  value: 'center'
+                }
+              ]
+              },
+              data: null,
+            },
           ],
         },
         {
@@ -73,13 +94,14 @@ class LinkButtonComponent extends AppComponent {
 
   triggerGraphEvent = (eventId) => {
     const graphId = this.getPropertyData(eventId);
-    this.getElementProps().onEvent(graphId)
+    if (typeof this.getElementProps().onEvent === 'function') {
+      this.getElementProps().onEvent(graphId)
+    }
   }
 
   renderContent() {
     const elemProps = this.getElementProps();
     elemProps.style = this.getDefaultStyle() || {};
-    const graphId = this.getPropertyData('event');
     return (
       <button
         type="button"

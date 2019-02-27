@@ -106,6 +106,13 @@ class LinkButtonComponent extends AppComponent {
       <button
         type="button"
         className="button-component"
+        style={
+          {
+            textAlign: this.getPropertyData('style') 
+              ? this.getPropertyData('style').value 
+              : 'center'
+          }
+        }
         aria-busy="false"
         onClick={() => this.triggerGraphEvent('click')}
         onMouseOver={() => this.triggerGraphEvent('hover')}

@@ -3,7 +3,6 @@
     cursor: pointer !important;
     display: inline-block !important;
     position: relative !important;
-    text-align: center !important;
     transition-property: background, border-color, color !important;
     transition-duration: 0.2s !important;
     transition-timing-function: ease-out !important;

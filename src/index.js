@@ -28,23 +28,24 @@ class LinkButtonComponent extends AppComponent {
               data: null,
             },
             {
-              id: 'style',
+              id: 'align',
               name: 'Align Text',
               type: 'dropdown', 
               options: {
-                options: [{
-                  label: 'Left',
-                  value: 'left'
-                },
-                {
-                  label: 'Right',
-                  value: 'right'
-                },
-                {
-                  label: 'Center',
-                  value: 'center'
-                }
-              ]
+                options: [
+                  {
+                    label: 'Left',
+                    value: 'left'
+                  },
+                  {
+                    label: 'Right',
+                    value: 'right'
+                  },
+                  {
+                    label: 'Center',
+                    value: 'center'
+                  }
+                ]
               },
               data: null,
             },
@@ -108,8 +109,8 @@ class LinkButtonComponent extends AppComponent {
         className="button-component"
         style={
           {
-            textAlign: this.getPropertyData('style') 
-              ? this.getPropertyData('style').value 
+            textAlign: this.getPropertyData('align') 
+              ? this.getPropertyData('align').value 
               : 'center'
           }
         }

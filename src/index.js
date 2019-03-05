@@ -38,24 +38,18 @@ class LinkButtonComponent extends AppComponent {
             {
               id: 'align-container',
               name: 'Align Container',
-              type: 'dropdown', 
-              options: {
-                options: [
-                  { label: 'Left', value: 'left' },
-                  { label: 'Right', value: 'right' },
-                  { label: 'Center', value: 'center' },
-                ]
-              },
+              type: 'position', 
+              options: ['left', 'center', 'right'],
               data: null,
             },
             {
               id: 'display-type',
-              name: 'Display Type',
+              name: 'Component Orientation',
               type: 'dropdown',
               options: {
                 options: [
-                  { label: 'Inline', value: 'inline' },
-                  { label: 'Block', value: 'block' },
+                  { label: 'Horizontal', value: 'inline' },
+                  { label: 'Vertical', value: 'block' },
                 ]
               },
               data: null,
@@ -144,7 +138,7 @@ class LinkButtonComponent extends AppComponent {
     const defaultDisplay = { display: 'block' }
     elemProps.style = Object.assign(this.getDefaultStyle() || {}, {
       ...this.getPropertyData('align-container') 
-        && alignContainer(this.getPropertyData('align-container').value),
+        && alignContainer(this.getPropertyData('align-container')),
       ...this.getPropertyData('container-width')
         && containerWidth(this.getPropertyData('container-width').value) || defaultWidth,
       ...this.getPropertyData('align-text')

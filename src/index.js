@@ -4,6 +4,14 @@ import AppComponent from 'flow-app-component';
 // Link Button Canvas Styles
 import './css/theme/default.css';
 
+// Programmatically generated styles
+import { 
+  alignContainer,
+  containerWidth,
+  aligntext,
+  displayType
+} from './style';
+
 class LinkButtonComponent extends AppComponent {
   constructor() {
     super();
@@ -25,6 +33,52 @@ class LinkButtonComponent extends AppComponent {
               name: 'Select Page',
               type: 'select-page',
               options: {},
+              data: null,
+            },
+            {
+              id: 'align-container',
+              name: 'Align Container',
+              type: 'position', 
+              options: ['left', 'center', 'right'],
+              data: null,
+            },
+            {
+              id: 'display-type',
+              name: 'Component Orientation',
+              type: 'dropdown',
+              options: {
+                options: [
+                  { label: 'Horizontal', value: 'inline' },
+                  { label: 'Vertical', value: 'block' },
+                ]
+              },
+              data: null,
+            },
+            {
+              id: 'container-width',
+              name: 'Width',
+              type: 'dropdown',
+              options: {
+                options: [
+                  { label: '10%', value: 'ten' },
+                  { label: '20%', value: 'twenty' },
+                  { label: '30%', value: 'thirty'},
+                  { label: '40%', value: 'forty' },
+                  { label: '50%', value: 'fifty' },
+                  { label: '60%', value: 'sixty'},
+                  { label: '70%', value: 'seventy' },
+                  { label: '80%', value: 'eighty' },
+                  { label: '90%', value: 'ninety'},
+                  { label: '100%', value: 'full-page'}
+                ]
+              },
+              data: null,
+            },
+            {
+              id: 'align-text',
+              name: 'Align Text',
+              type: 'align-text', 
+              options: ['left', 'right', 'center'],
               data: null,
             },
           ],
@@ -73,17 +127,30 @@ class LinkButtonComponent extends AppComponent {
 
   triggerGraphEvent = (eventId) => {
     const graphId = this.getPropertyData(eventId);
-    this.getElementProps().onEvent(graphId)
+    if (typeof this.getElementProps().onEvent === 'function') {
+      this.getElementProps().onEvent(graphId)
+    }
   }
 
   renderContent() {
     const elemProps = this.getElementProps();
-    elemProps.style = this.getDefaultStyle() || {};
-    const graphId = this.getPropertyData('event');
+    const defaultWidth = { width: '100%' }
+    const defaultDisplay = { display: 'block' }
+    elemProps.style = Object.assign(this.getDefaultStyle() || {}, {
+      ...this.getPropertyData('align-container') 
+        && alignContainer(this.getPropertyData('align-container')),
+      ...this.getPropertyData('container-width')
+        && containerWidth(this.getPropertyData('container-width').value) || defaultWidth,
+      ...this.getPropertyData('align-text')
+        && aligntext(this.getPropertyData('align-text')) || 'center',
+      ...this.getPropertyData('display-type')
+        && displayType(this.getPropertyData('display-type').value) || defaultDisplay,
+    })
     return (
       <button
         type="button"
         className="button-component"
+        style={elemProps.style}
         aria-busy="false"
         onClick={() => this.triggerGraphEvent('click')}
         onMouseOver={() => this.triggerGraphEvent('hover')}

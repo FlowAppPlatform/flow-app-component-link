@@ -1,13 +1,13 @@
 
 .button-component {
     cursor: pointer !important;
-    display: inline-block !important;
+    /* display: inline-block !important; */
+    display: inline;
     position: relative !important;
-    text-align: center !important;
     transition-property: background, border-color, color !important;
     transition-duration: 0.2s !important;
     transition-timing-function: ease-out !important;
-    width: 100% !important;
+    /* width: 100% !important; */
     font-size: 16px !important;
     line-height: 22px !important;
     letter-spacing: normal !important;
@@ -17,10 +17,10 @@
     font-weight: 800 !important;
     padding-left: 24px !important;
     padding-right: 24px !important;
-    min-width: 77.6656px !important;
+    /* min-width: 77.6656px !important; */
     box-shadow: none !important;
     color: rgb(255, 255, 255) !important;
-    margin: 0px !important;
+    /* margin: 0px !important; */
     text-decoration: none !important;
     border-radius: 4px !important;
     border-width: 2px !important;

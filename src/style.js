@@ -64,7 +64,3 @@ export const containerWidth = option => {
 export const aligntext = option => ({
   textAlign: option
 })
-
-export const displayType = option => ({
-  display: option
-})

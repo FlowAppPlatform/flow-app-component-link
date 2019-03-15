@@ -9,7 +9,6 @@ import {
   alignContainer,
   containerWidth,
   aligntext,
-  displayType
 } from './style';
 
 class LinkButtonComponent extends AppComponent {
@@ -40,18 +39,6 @@ class LinkButtonComponent extends AppComponent {
               name: 'Align Container',
               type: 'position', 
               options: ['left', 'center', 'right'],
-              data: null,
-            },
-            {
-              id: 'display-type',
-              name: 'Component Orientation',
-              type: 'dropdown',
-              options: {
-                options: [
-                  { label: 'Horizontal', value: 'inline' },
-                  { label: 'Vertical', value: 'block' },
-                ]
-              },
               data: null,
             },
             {
@@ -135,7 +122,6 @@ class LinkButtonComponent extends AppComponent {
   renderContent() {
     const elemProps = this.getElementProps();
     const defaultWidth = { width: '100%' }
-    const defaultDisplay = { display: 'block' }
     elemProps.style = Object.assign(this.getDefaultStyle() || {}, {
       ...this.getPropertyData('align-container') 
         && alignContainer(this.getPropertyData('align-container')),
@@ -143,8 +129,6 @@ class LinkButtonComponent extends AppComponent {
         && containerWidth(this.getPropertyData('container-width').value) || defaultWidth,
       ...this.getPropertyData('align-text')
         && aligntext(this.getPropertyData('align-text')) || 'center',
-      ...this.getPropertyData('display-type')
-        && displayType(this.getPropertyData('display-type').value) || defaultDisplay,
     })
     return (
       <button

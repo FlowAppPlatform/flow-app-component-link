@@ -9,7 +9,6 @@ import {
   alignContainer,
   containerWidth,
   aligntext,
-  displayType
 } from './style';
 
 class LinkButtonComponent extends AppComponent {
